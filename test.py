@@ -193,9 +193,19 @@ def style_transfer(
                 target: target_feature
             })
 
-            filename = '%s_stylized_%s.%s' % (content_name, style_name, save_ext)
-            filename = os.path.join(output_dir, filename)
+            #filename = '%s_stylized_%s.%s' % (content_name, style_name, save_ext)
+            #filename = os.path.join(output_dir, filename)
+            #save_image(filename, output[0], data_format=data_format)
+            dirname = os.path.join(output_dir, style_name)
+            filename = content_name
+            
+            if not os.path.exists(dirname):
+                os.makedirs(dirname)
+            
+            filename = os.path.join(dirname, filename)
+	    
             save_image(filename, output[0], data_format=data_format)
+            
             print('Output image saved at', filename)
 
 
